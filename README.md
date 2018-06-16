@@ -2,7 +2,7 @@
 June 16, 2018
 
 ### About Kiva
-Kiva is an international nonprofit founded in 2005 with a mission to connect people through lending to alleviate poverty. In June 2018 Kiva was in 85 countries, had served 2.9 Million borrowers through $1.16 Billion worth of loans.
+Kiva is an international nonprofit founded in 2005 with a mission to connect people through lending to alleviate poverty. In June 2018 Kiva was in 85 countries, and had served 2.9 Million borrowers through $1.16 Billion worth of loans.
 
 ### How it works
 1. A borrower applies for a loan (through a micro-finance partner, through to Kiva directly).
