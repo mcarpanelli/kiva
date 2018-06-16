@@ -2,7 +2,7 @@
 June 16, 2018
 
 ### About Kiva
-Kiva is an international nonprofit founded in 2005 with a mission to connect people through lending to alleviate poverty. In June 2018 Kiva was in 85 countries, had served 2.9 Million borrowers through USD 1.16 Billion worth of loans.
+Kiva is an international nonprofit founded in 2005 with a mission to connect people through lending to alleviate poverty. In June 2018 Kiva was in 85 countries, had served 2.9 Million borrowers through $1.16 Billion worth of loans.
 
 ### How it works
 1. A borrower applies for a loan (through a micro-finance partner, through to Kiva directly).
@@ -61,4 +61,4 @@ This analysis uses Kiva's Data Snapshot (https://build.kiva.org/docs/data/snapsh
     df['diff_posted_planned'] = df['diff_posted_planned'] / np.timedelta64(1, 'D')
     ```
 * Loan terms range from 24 to 60 months, and first-time borrowers can raise up to $5,000. The maximum loan amount for all borrowers is $20,000.
-* Kiva crowdfunds loans so there are many individual lenders who come together to contribute to each successful loan (see feature 'NUM_LENDERS_TOTAL'). A lender can lend USD 25 or more to a borrower to help them reach their goal, and see the other lenders who supported that borrower.
+* Kiva crowdfunds loans so there are many individual lenders who come together to contribute to each successful loan (see feature 'NUM_LENDERS_TOTAL'). A lender can lend $25 or more to a borrower to help them reach their goal, and see the other lenders who supported that borrower.
