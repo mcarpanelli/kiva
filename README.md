@@ -5,7 +5,7 @@ June 16, 2018
 Kiva is an international nonprofit founded in 2005 with a mission to connect people through lending to alleviate poverty. In June 2018 Kiva was in 85 countries, and had served 2.9 Million borrowers through $1.16 Billion worth of loans.
 
 ### How it works
-1. A borrower applies for a loan (through a micro-finance partner, through to Kiva directly).
+1. A borrower applies for a loan (through a micro-finance partner, or to Kiva directly).
 2. The loan goes through the underwriting and approval process.
 3. The loan is posted to Kiva for lenders to support, and a 30-day fundraising period begins.
 4. Borrowers repay the loans.
@@ -48,17 +48,18 @@ This analysis uses Kiva's Data Snapshot (https://build.kiva.org/docs/data/snapsh
     ```
 
 4. Make sure you understand Kiva's business model. These are some worth-noting considerations:
+* Read the data dictionary here: http://build.kiva.org/docs/data/loans. 
 * The dataset contains both group and individual loans (i.e. loans where the borrower can be an individual or a group of individuals). You might want to analyze these separately.
     * If you want to create a new feature, here is how:
     ```
     df['GROUP'] = np.where(np.logical_and(df['BORROWER_GENDERS']!= 'male', df['BORROWER_GENDERS']!= 'female'), 1, 0)
     ```
 * Kiva lends mostly through on-the-field microfinance business partners, but in some countries it also provides direct financing (see feature 'DISTRIBUTION_MODEL'). You might want to consider these two models separately.
-* Loan requests are posted for a maximum of 30 days. If they're not funded within that timeframe, the loan expires and the Field Partner does not receive the funds for that particular loan. The majority of loans on Kiva are pre-disbursed by the Field Partner to the borrower, so an expiring loan does not necessarily mean that the borrower will not be funded.
-    * It might be useful to know how to compute days elapsed between two dates. Here is an example:
+* Loan requests are posted for a maximum of 30 days. If they're not funded within that timeframe, the loan expires and the Field Partner does not receive the funds for that particular loan.
+    * If you are interested in the behavior of expired loans or loans that are about to expire, it might be useful to know how to compute days elapsed between two dates. Here is an example:
     ```
     df['diff_posted_planned'] = df['PLANNED_EXPIRATION_TIME'].sub(df['POSTED_TIME'], axis=0)
     df['diff_posted_planned'] = df['diff_posted_planned'] / np.timedelta64(1, 'D')
     ```
-* Loan terms range from 24 to 60 months, and first-time borrowers can raise up to $5,000. The maximum loan amount for all borrowers is $20,000.
-* Kiva crowdfunds loans so there are many individual lenders who come together to contribute to each successful loan (see feature 'NUM_LENDERS_TOTAL'). A lender can lend $25 or more to a borrower to help them reach their goal, and see the other lenders who supported that borrower.
+* First-time borrowers can raise up to $5,000. The maximum loan amount for all borrowers is $20,000.
+* Kiva crowdfunds loans so there are many individual lenders who come together to contribute to each successful loan (see feature 'NUM_LENDERS_TOTAL'). A lender can lend $25 or more to a borrower to help them reach their goal, and see the other lenders who supported that borrower. Explore how this works here: https://www.kiva.org/lend. 
