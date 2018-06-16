@@ -18,6 +18,7 @@ This analysis uses Kiva's Data Snapshot (https://build.kiva.org/docs/data/snapsh
 * Clean data as needed.
 * Run general exploratory data analysis.
 * Formulate a relevant business or research question.
+    * Ideally related to Galvanize DSI Week 3 (probability and statistics) :)
 * Provide evidence to support your conclusions.
 * Present notebook to the group and publish.
 
@@ -54,5 +55,10 @@ This analysis uses Kiva's Data Snapshot (https://build.kiva.org/docs/data/snapsh
     ```
 * Kiva lends mostly through on-the-field microfinance business partners, but in some countries it also provides direct financing (see feature 'DISTRIBUTION_MODEL'). You might want to consider these two models separately.
 * Loan requests are posted for a maximum of 30 days. If they're not funded within that timeframe, the loan expires and the Field Partner does not receive the funds for that particular loan. The majority of loans on Kiva are pre-disbursed by the Field Partner to the borrower, so an expiring loan does not necessarily mean that the borrower will not be funded.
+    * It might be useful to know how to compute days elapsed between two dates. Here is an example:
+    ```
+    df['diff_posted_planned'] = df['PLANNED_EXPIRATION_TIME'].sub(df['POSTED_TIME'], axis=0)
+    df['diff_posted_planned'] = df['diff_posted_planned'] / np.timedelta64(1, 'D')
+    ```
 * Loan terms range from 24 to 60 months, and first-time borrowers can raise up to $5,000. The maximum loan amount for all borrowers is $20,000.
 * Kiva crowdfunds loans so there are many individual lenders who come together to contribute to each successful loan (see feature 'NUM_LENDERS_TOTAL'). A lender can lend USD 25 or more to a borrower to help them reach their goal, and see the other lenders who supported that borrower.
